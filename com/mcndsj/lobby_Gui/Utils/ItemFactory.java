@@ -24,4 +24,10 @@ public class ItemFactory {
 	        return itemStack;
 	    }
 
+	  public static ItemStack create(Material material,byte data,ItemMeta meta) {
+	        ItemStack itemStack = new MaterialData(material, data).toItemStack(1);
+	        ItemMeta itemMeta = meta.clone();
+	        itemStack.setItemMeta(itemMeta);
+	        return itemStack;
+	    }
 }

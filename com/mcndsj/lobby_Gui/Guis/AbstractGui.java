@@ -7,9 +7,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.mcndsj.lobby_Gui.LobbyGui;
+import com.mcndsj.lobby_Gui.Items.AbstractItem;
 
 public abstract class AbstractGui implements Listener {
 	private String title = null;
+	protected AbstractItem item = null;
 	
 	public AbstractGui(String title){
 		this.title = title;
@@ -28,4 +30,7 @@ public abstract class AbstractGui implements Listener {
 	
 	protected abstract void callOnClick(Player p,ItemStack item);
 	
+	protected void setAbstractItem (AbstractItem item){
+		this.item = item;
+	}
 }
