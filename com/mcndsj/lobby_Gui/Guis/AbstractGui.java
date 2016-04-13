@@ -17,7 +17,6 @@ public abstract class AbstractGui implements Listener {
 	public AbstractGui(){
 		LobbyGui.getInstance().getServer().getPluginManager().registerEvents(this, LobbyGui.getInstance());
 	}
-	protected abstract void initial();
 	
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent evt){
