@@ -79,10 +79,27 @@ public abstract class AbstractItem implements Listener{
 	}
 	
 	
+	/**
+	 * @param slot
+	 * @return
+	 * 
+	 * get item from click position
+	 */
 	public ItemStack getItem(int slot){
-		return itemMap.get(slot);
+		if(!itemMap.containsKey(slot)){
+			return null;
+		}else{
+			return itemMap.get(slot);
+		}
 	}
 	
+	/**
+	 * @param key
+	 * @param item
+	 * @return
+	 * 
+	 * register items to inventory
+	 */
 	public boolean registerItem(int key,ItemStack item){
 		if(itemMap.containsKey(key))
 			return false;
@@ -91,6 +108,12 @@ public abstract class AbstractItem implements Listener{
 		return true;
 	}
 	
+	/**
+	 * @param i
+	 * @return
+	 * 
+	 * remove item from inventory
+	 */
 	public ItemStack removeItem(int i){
 		return itemMap.remove(i);
 	}

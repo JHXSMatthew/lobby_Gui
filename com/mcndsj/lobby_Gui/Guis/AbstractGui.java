@@ -1,5 +1,6 @@
 package com.mcndsj.lobby_Gui.Guis;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,10 +14,10 @@ public abstract class AbstractGui implements Listener {
 	private String title = null;
 	protected AbstractItem item = null;
 	
-	public AbstractGui(String title){
-		this.title = title;
+	public AbstractGui(){
 		LobbyGui.getInstance().getServer().getPluginManager().registerEvents(this, LobbyGui.getInstance());
 	}
+	protected abstract void initial();
 	
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent evt){
@@ -25,12 +26,19 @@ public abstract class AbstractGui implements Listener {
 				!evt.getClickedInventory().getTitle().equals(title)){
 			return;
 		}
+		if(evt.getCurrentItem() == null || evt.getCurrentItem().getType() == Material.AIR)
+			return;
+		
+		
 		callOnClick((Player)evt.getWhoClicked(), evt.getCurrentItem());
 	}
 	
-	protected abstract void callOnClick(Player p,ItemStack item);
+	protected abstract void callOnClick(Player p,ItemStack item );
 	
 	protected void setAbstractItem (AbstractItem item){
 		this.item = item;
+	}
+	public AbstractItem getItem(){
+		return item;
 	}
 }

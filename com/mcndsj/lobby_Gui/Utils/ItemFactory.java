@@ -3,6 +3,7 @@ package com.mcndsj.lobby_Gui.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,8 +18,8 @@ public class ItemFactory {
 	            List<String> finalLore = new ArrayList<>();
 	            for (String s : lore)
 	                if (s != null)
-	                    finalLore.add(s.replace("&", "§"));
-	            itemMeta.setLore(finalLore);
+	                    finalLore.add(ChatColor.GRAY.toString()+s.replace("&", "§"));
+	            itemMeta.setLore( finalLore);
 	        }
 	        itemStack.setItemMeta(itemMeta);
 	        return itemStack;
